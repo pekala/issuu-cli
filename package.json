@@ -1,14 +1,18 @@
 {
-    "name": "issuu-cli",
-    "version": "1.0.0",
-    "description": "CLI helper app for working with issuu frontend code",
-    "main": "issuu.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "issuu",
-    "license": "ISC",
-    "dependencies": {
-        "commander": "^2.8.1"
-    }
+  "name": "issuu-cli",
+  "version": "1.0.0",
+  "description": "CLI helper app for working with issuu frontend code",
+  "main": "issuu.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "issuu",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "commander": "^2.8.1",
+    "inquirer": "^0.8.5",
+    "lodash": "^3.9.3",
+    "shelljs": "^0.5.1"
+  }
 }
