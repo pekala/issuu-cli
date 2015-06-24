@@ -7,4 +7,5 @@ program
     .command('local [name]', 'link one or more issuu packages')
     .command('nginx [env]', 'set the recipe for nginx')
     .command('grep', 'search across all issuu repos')
+    .command('state', 'get state')
     .parse(process.argv);
