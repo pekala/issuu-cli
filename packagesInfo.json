@@ -1,6 +1,6 @@
 {
     "issuu-frontend-web2": {
-        "path": "frontend-web2"
+        "path": "frontend-web2/client"
     },
     "issuu-payment": {
         "path": "payment/client"
