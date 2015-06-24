@@ -1,8 +1,12 @@
 var _ = require('lodash');
 var moment = require('moment');
 var jf = require('jsonfile');
+var Moniker = require('moniker');
 var getSavedStates = require('./getSavedStates');
 var getLinkingState = require('./getLinkingState');
+var getDataFile = require('./getDataFile');
+
+var nameGenerator = Moniker.generator([Moniker.adjective, Moniker.noun]);
 
 module.exports = function(name) {
     var savedStates = getSavedStates() || [];
@@ -15,17 +19,19 @@ module.exports = function(name) {
     }).pluck('name').value();
 
     if (currentPackages.length) {
-        console.log('Currently linked: ', currentPackages.join(', '));
+        name = name || nameGenerator.choose([Moniker.noun]);
+        savedStates.push({
+            saved: moment().unix(),
+            name: name,
+            links: currentPackages
+        });
+
+        jf.writeFileSync(getDataFile(), savedStates);
+
+        console.log('Currently linked: ', currentPackages.join(', ') + ' saved as ' + name.magenta);
+    } else {
+        console.log('You don\'t link any packages')
     }
-
-    savedStates.push({
-        saved: moment().unix(),
-        name: name,
-        links: currentPackages
-    });
-
-    var file = './data.json';
-    jf.writeFileSync(file, savedStates);
 
     process.exit();
 };

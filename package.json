@@ -18,7 +18,8 @@
         "jsonfile": "^2.1.2",
         "lodash": "^3.9.3",
         "moment": "^2.10.3",
-        "shelljs": "^0.5.1",
-        "progress": "^1.1.8"
+        "moniker": "^0.1.2",
+        "progress": "^1.1.8",
+        "shelljs": "^0.5.1"
     }
 }

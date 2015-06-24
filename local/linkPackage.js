@@ -5,15 +5,17 @@ var getFullPackageInfo = require('./getFullPackageInfo');
 module.exports = function(packageName) {
     var pkgInfo = getFullPackageInfo(packageName);
 
-    var command =
-        'cd ' + pkgInfo.path + ';' +
+    var command = 'cd ' + pkgInfo.path + ';';
+    if (pkgInfo.postlink) {
+        command = command + pkgInfo.postlink + ';';
+    }
+    command = command +
         'npm link -s;' +
         'cd ' + pkgInfo.parentPath + ';' +
         'npm link ' + pkgInfo.realName + ' -s';
 
     console.log('------ Linking '.magenta + pkgInfo.name.bold.magenta + ' by running: ');
     console.log(command.replace(/;/g, '\n').cyan);
-
 
     var result = shell.exec(command, {
         silent: false

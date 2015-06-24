@@ -1,9 +1,11 @@
 {
     "issuu-frontend-web2": {
-        "path": "frontend-web2/client"
+        "path": "frontend-web2/client",
+        "postlink": "make setup build-fast"
     },
     "issuu-payment": {
-        "path": "payment/client"
+        "path": "payment/client",
+        "postlink": "make clean build"
     },
     "issuu-payment-widgets": {
         "path": "payment/client-widgets"
@@ -30,7 +32,8 @@
         "path": "frontend-tracking"
     },
     "issuu-publisher-suite": {
-        "path": "publisher-suite/client"
+        "path": "publisher-suite/client",
+        "postlink": "make clean build"
     },
     "issuu-ui-components": {
         "path": "ui-components/npm"

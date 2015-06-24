@@ -1,5 +1,6 @@
 var getLocalPackagePath = require('./getLocalPackagePath');
 var getRealPackageName = require('./getRealPackageName');
+var packagesInfo = require('../packagesInfo.json');
 
 var ISSUU_HOME = process.env.ISSUU_HOME;
 
@@ -20,6 +21,7 @@ module.exports = function(packageName) {
         path: packagePath,
         realName: realPackageName,
         parentName: parentName,
-        parentPath: parentPath
+        parentPath: parentPath,
+        postlink: packagesInfo[realPackageName].postlink
     };
 };

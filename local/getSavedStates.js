@@ -1,6 +1,8 @@
 var jf = require('jsonfile');
+var getDataFile = require('./getDataFile');
 
 module.exports = function() {
-    var file = './data.json';
-    return jf.readFileSync(file);
+    return jf.readFileSync(getDataFile(), {
+        throws: false
+    });
 };

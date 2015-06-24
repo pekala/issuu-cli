@@ -24,7 +24,7 @@ if (program.reset) {
 }
 
 if (program.load) {
-    loadSavedStates();
+    loadSavedStates(program.args[0]);
 }
 
 if (program.save) {
