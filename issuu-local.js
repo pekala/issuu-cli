@@ -1,7 +1,12 @@
 #!/usr/bin/env node
 
 var program = require('commander');
-var interactiveLinking = require('./local/interactive');
+var interactiveSelection = require('./local/interactiveSelection');
+var resetLinkingState = require('./local/reset');
+var linkPackage = require('./local/linkPackage');
+var listSavedStates = require('./local/listSavedStates');
+var loadSavedStates = require('./local/loadSavedStates');
+var saveStates = require('./local/saveState');
 
 program
     .option('-s, --save', 'save current link state')
@@ -11,40 +16,36 @@ program
     .parse(process.argv);
 
 if (program.list) {
-    console.log('listing all saved link states');
-    process.exit();
+    listSavedStates();
 }
 
 if (program.reset) {
-    console.log('resets linking state');
-    process.exit();
+    resetLinkingState();
 }
 
 if (program.load) {
-    console.log('loading "%s" link state', program.args);
-    process.exit();
+    loadSavedStates();
 }
 
 if (program.save) {
-    console.log('saving current link state as %s', program.args);
-    process.exit();
+    saveStates(program.args[0]);
 }
 
 var pkgs = program.args;
 
-if (!pkgs.length) {
-    interactiveLinking();
+if (!program.load && !pkgs.length) {
+    interactiveSelection();
 }
 
 pkgs.forEach(function(pkg) {
-    var pkgName = pkg.split('#')[0];
-    var pkgBranch = pkg.split('#')[1];
-    var pkgVersion = pkg.split('@')[1];
-    if (pkgBranch) {
-        console.log('linking : %s branch %s', pkgName, pkgBranch);
-    } else if (pkgVersion) {
-        console.log('linking : %s version %s', pkgName, pkgVersion);
+    var packageName = pkg.split('#')[0];
+    var packageBranch = pkg.split('#')[1];
+
+    if (packageBranch) {
+        console.log('linking : %s branch %s', packageName, packageBranch);
+        linkPackage(packageName, packageBranch);
     } else {
-        console.log('linking : %s', pkgName);
+        console.log('linking : %s', packageName);
+        linkPackage(packageName);
     }
 });

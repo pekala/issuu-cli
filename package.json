@@ -15,8 +15,10 @@
         "colors": "^1.1.2",
         "commander": "^2.8.1",
         "inquirer": "^0.8.5",
+        "jsonfile": "^2.1.2",
         "lodash": "^3.9.3",
+        "moment": "^2.10.3",
         "shelljs": "^0.5.1",
-        "progress": "^1.1.8",
+        "progress": "^1.1.8"
     }
 }

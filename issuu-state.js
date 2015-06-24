@@ -4,9 +4,12 @@ var shell = require('shelljs');
 var program = require('commander');
 var ProgressBar = require('progress');
 
-var output = require('./misc/output');
+var output = require('./shared/output');
 
-var bar = new ProgressBar(':bar:percent', { total: 3, width: 50 });
+var bar = new ProgressBar(':bar:percent', {
+    total: 3,
+    width: 50
+});
 var nginx = require('./state/nginx').get();
 bar.tick();
 var runningProcesses = require('./state/running-processes').get();
