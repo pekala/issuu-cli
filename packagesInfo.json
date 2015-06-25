@@ -20,7 +20,7 @@
         "path": "fe-client-libs"
     },
     "issuu-documentpage": {
-        "path": "documentpage"
+        "path": "fe-documentpage"
     },
     "issuu-frontend-marketing": {
         "path": "frontend-marketing"
